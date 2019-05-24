@@ -10,6 +10,7 @@ services:
       - 8080:8080
     volumes:
       - ./config/ssmgr:/root/config/
+      - ./db_s:/root/.ssmgr
     command: ["ssmgr", "-c", "/root/config/ssmgr-m.yml"]
     depends_on:
       - redis

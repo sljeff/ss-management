@@ -9,4 +9,5 @@ services:
     network_mode: host
     volumes:
       - ./config/ssmgr:/root/config/
+      - ./db_m:/root/.ssmgr
     command: ["ssmgr", "-c", "/root/config/ssmgr-s.yml", "-r"]
