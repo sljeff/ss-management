@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  ssmgr_m:
+    container_name: ssmgr_m
+    restart: always
+    build: .
+    image: ssmgr:master
+    ports:
+      - 8080:8080
+    volumes:
+      - ./config/ssmgr:/root/config/
+    command: ["ssmgr", "-c", "/root/config/ssmgr-m.yml"]
+    depends_on:
+      - redis
+  nginx:
+    image: nginx
+    restart: always
+    container_name: nginx
+    volumes:
+      - ./config/nginx/:/etc/nginx/conf.d
+    ports:
+      - 80:80
+    depends_on:
+      - ssmgr_m
+  redis:
+    image: redis:4
+    container_name: redis
+    restart: always
+    ports:
+      - 6379:6379

@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  ssmgr_s:
+    container_name: shadowsocks
+    restart: always
+    build: .
+    image: ssmgr:master
+    network_mode: host
+    volumes:
+      - ./config/ssmgr:/root/config/
+    command: ["ssmgr", "-c", "/root/config/ssmgr-s.yml", "-r"]
