@@ -1,7 +1,8 @@
 type: m
-# manager:
-#   address: 1.1.1.1:6002
-#   password: '123456'
+# one ssmgr-s
+manager:
+  address: 1.1.1.1:6002
+  password: '123456'
 plugins:
   flowSaver:
     use: true
